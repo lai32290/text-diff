@@ -32,6 +32,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          exclude_assets: ".*"
           enable_jekyll: false
           force_orphan: true
