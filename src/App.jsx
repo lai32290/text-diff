@@ -19,18 +19,18 @@ function App() {
     text1Lines.forEach((line, index) => {
       if (line !== text2Lines[index]) {
         if (text2Lines[index] === undefined) {
-          diffLines.push({ type: 'removed', text: `- ${line}` });
+          diffLines.push({ type: 'removed', text: `- ${line}`, lineNumber: index + 1 });
         } else {
-          diffLines.push({ type: 'removed', text: `- ${line}` });
-          diffLines.push({ type: 'added', text: `+ ${text2Lines[index]}` });
+          diffLines.push({ type: 'removed', text: `- ${line}`, lineNumber: index + 1 });
+          diffLines.push({ type: 'added', text: `+ ${text2Lines[index]}`, lineNumber: index + 1 });
         }
       } else {
-        diffLines.push({ type: 'unchanged', text: `  ${line}` });
+        diffLines.push({ type: 'unchanged', text: `  ${line}`, lineNumber: index + 1 });
       }
     });
 
-    text2Lines.slice(text1Lines.length).forEach((line) => {
-      diffLines.push({ type: 'added', text: `+ ${line}` });
+    text2Lines.slice(text1Lines.length).forEach((line, index) => {
+      diffLines.push({ type: 'added', text: `+ ${line}`, lineNumber: text1Lines.length + index + 1 });
     });
 
     setDiffResult(diffLines);
@@ -62,7 +62,9 @@ function App() {
       <button onClick={handleCompare}>Compare</button>
       <pre className="diff-result">
         {diffResult.map((line, index) => (
-          <div key={index} className={line.type}>{line.text}</div>
+          <div key={index} className={line.type}>
+            <span className="line-number">{line.lineNumber}</span> {line.text}
+          </div>
         ))}
       </pre>
     </div>
