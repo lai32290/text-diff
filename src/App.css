@@ -1,8 +1,9 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  width: 100%;
+
 }
 
 .logo {
@@ -43,7 +44,7 @@
 
 .app-container {
   font-family: Arial, sans-serif;
-  max-width: 800px;
+  max-width: 1200px; /* Increased width for better layout */
   margin: 0 auto;
   padding: 20px;
   text-align: center;
@@ -51,8 +52,10 @@
 
 .input-container {
   display: flex;
-  gap: 10px;
+  flex-direction: row; /* Arrange inputs side by side */
+  gap: 20px; /* Add spacing between the inputs */
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .input-with-lines {
@@ -61,14 +64,15 @@
 }
 
 textarea {
-  width: 100%;
-  height: 150px;
-  padding: 10px;
+  flex: 1; /* Allow inputs to expand equally */
+  height: 300px; /* Maintain the increased height */
+  padding: 15px;
   font-size: 16px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
   resize: none;
-  margin-left: 40px; /* Leave space for line numbers */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .line-numbers {
