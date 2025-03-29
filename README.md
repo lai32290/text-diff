@@ -1,12 +1,69 @@
-# React + Vite
+# Text Diff Tool
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## About the Project
 
-Currently, two official plugins are available:
+The Text Diff Tool is a simple and intuitive tool for comparing two texts and identifying the differences between them. It is ideal for developers, writers, editors, and anyone who needs to analyze changes between versions of texts or code.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+With this tool, you can clearly and organizedly visualize added, removed, and unchanged lines, similar to the `git diff` format.
 
-## Expanding the ESLint configuration
+### Privacy
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+This tool works entirely in your browser. **No data is sent to any backend or server**, ensuring your privacy and security.
+
+## Usage Examples
+
+### Example 1: Text Comparison
+
+**Text 1:**
+```
+Hello, world!
+This is a sample text.
+Let's compare the differences.
+```
+
+**Text 2:**
+```
+Hello, world!
+This is an updated sample text.
+Let's compare the changes.
+```
+
+**Result:**
+```
+  Hello, world!
+- This is a sample text.
++ This is an updated sample text.
+  Let's compare the changes.
+```
+
+### Example 2: Code Comparison
+
+**Original Code:**
+```javascript
+function sum(a, b) {
+  return a + b;
+}
+```
+
+**Updated Code:**
+```javascript
+function sum(a, b, c = 0) {
+  return a + b + c;
+}
+```
+
+**Result:**
+```
+  function sum(a, b, c = 0) {
++   return a + b + c;
+-   return a + b;
+  }
+```
+
+With the Text Diff Tool, you can easily identify changes and understand the differences between two texts or pieces of code. Try it now and see how simple and efficient it is!
+
+## Try the Tool
+
+You can use the Text Diff Tool directly in your browser by visiting the following URL:
+
+[https://lai32290.github.io/text-diff/](https://lai32290.github.io/text-diff/)
