@@ -8,8 +8,9 @@ function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(true);
 
   useEffect(() => {
-    document.body.className = 'dark-theme';
-  }, []);
+    // Inicialize com tema escuro
+    document.body.className = isDarkTheme ? 'dark-theme' : 'light-theme';
+  }, [isDarkTheme]);
 
   const handleCompare = () => {
     const diffLines = [];
@@ -38,12 +39,18 @@ function App() {
 
   const toggleTheme = () => {
     setIsDarkTheme((prevTheme) => !prevTheme);
-    document.body.className = isDarkTheme ? 'light-theme' : 'dark-theme';
   };
 
   return (
     <div className="app-container">
-      <h1>Text Diff Tool</h1>
+      <div className="title-container">
+        <h1 className="main-title">
+          <span className="title-highlight">Text</span> 
+          <span className="title-diff">Diff</span> 
+          <span className="title-tool">Tool</span>
+        </h1>
+        <p className="title-subtitle">Compare text and see the differences</p>
+      </div>
       <button onClick={toggleTheme} className="theme-toggle">
         Switch to {isDarkTheme ? 'Light' : 'Dark'} Theme
       </button>
@@ -59,14 +66,16 @@ function App() {
           onChange={(e) => setText2(e.target.value)}
         />
       </div>
-      <button onClick={handleCompare}>Compare</button>
-      <pre className="diff-result">
-        {diffResult.map((line, index) => (
-          <div key={index} className={line.type}>
-            <span className="line-number">{line.lineNumber}</span> {line.text}
-          </div>
-        ))}
-      </pre>
+      <button onClick={handleCompare} className="compare-button">Compare</button>
+      {diffResult.length > 0 && (
+        <pre className="diff-result">
+          {diffResult.map((line, index) => (
+            <div key={index} className={line.type}>
+              <span className="line-number">{line.lineNumber}</span> {line.text}
+            </div>
+          ))}
+        </pre>
+      )}
     </div>
   );
 }
