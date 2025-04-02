@@ -6,11 +6,19 @@ function App() {
   const [text2, setText2] = useState('');
   const [diffResult, setDiffResult] = useState([]);
   const [isDarkTheme, setIsDarkTheme] = useState(true);
+  const [autoCompare, setAutoCompare] = useState(false);
 
   useEffect(() => {
     // Inicialize com tema escuro
     document.body.className = isDarkTheme ? 'dark-theme' : 'light-theme';
   }, [isDarkTheme]);
+
+  useEffect(() => {
+    // Comparar automaticamente quando o texto mudar se autoCompare estiver ativado
+    if (autoCompare) {
+      handleCompare();
+    }
+  }, [text1, text2, autoCompare]);
 
   const handleCompare = () => {
     const diffLines = [];
@@ -54,6 +62,19 @@ function App() {
       <button onClick={toggleTheme} className="theme-toggle">
         Switch to {isDarkTheme ? 'Light' : 'Dark'} Theme
       </button>
+      
+      <div className="auto-compare-container">
+        <label className="auto-compare-label">
+          <input 
+            type="checkbox" 
+            checked={autoCompare} 
+            onChange={(e) => setAutoCompare(e.target.checked)} 
+            className="auto-compare-checkbox"
+          />
+          Auto-compare on change
+        </label>
+      </div>
+      
       <div className="input-container">
         <textarea
           placeholder="Enter first text here..."
@@ -66,7 +87,11 @@ function App() {
           onChange={(e) => setText2(e.target.value)}
         />
       </div>
-      <button onClick={handleCompare} className="compare-button">Compare</button>
+      
+      {!autoCompare && (
+        <button onClick={handleCompare} className="compare-button">Compare</button>
+      )}
+      
       {diffResult.length > 0 && (
         <pre className="diff-result">
           {diffResult.map((line, index) => (

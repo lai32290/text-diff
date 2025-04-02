@@ -187,3 +187,42 @@ body.dark-theme .diff-result {
 body.dark-theme .title-subtitle {
   color: #bdc3c7;
 }
+
+.auto-compare-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.auto-compare-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1rem;
+  user-select: none;
+  background-color: #f0f0f0;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.auto-compare-label:hover {
+  background-color: #e0e0e0;
+}
+
+.auto-compare-checkbox {
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+  accent-color: #3498db;
+}
+
+body.dark-theme .auto-compare-label {
+  background-color: #3d3d3d;
+  color: #f0f0f0;
+}
+
+body.dark-theme .auto-compare-label:hover {
+  background-color: #4d4d4d;
+}
